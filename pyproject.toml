@@ -1,0 +1,18 @@
+[project]
+name = "medsearch"
+version = "0.1.0"
+description = "main source folder"
+authors = [
+    {name = "cubahiro",email = "cubahiro@proton.me"}
+]
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "ruff (>=0.16.0,<0.17.0)",
+    "pytest (>=9.1.1,<10.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
