@@ -1,0 +1,30 @@
+services: 
+  elasticsearch:
+    image: elastic/elasticsearch:8.19.19
+    container_name: elastic
+    env_file: 
+      - .env
+    ports:
+     - "9200:9200" # elasticsearch REST API 
+    volumes: 
+     -  ./.docker/data/esdata:/usr/share/elasticsearch/data
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "curl -f -X GET 'http://localhost:9200/_cluster/health?wait_for_status=green&timeout=1s' || exit 1"
+        ]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+  
+  kibana: 
+    image: docker.elastic.co/kibana/kibana:8.13.0
+    container_name: kabana
+    env_file: 
+     - .env
+    ports: 
+     - "5601:5601" # kibana web interface
+    depends_on: 
+      elasticsearch: 
+        condition: service_healthy
