@@ -2,8 +2,9 @@ services:
   elasticsearch:
     image: elastic/elasticsearch:8.19.19
     container_name: elastic
-    env_file: 
-      - .env
+    environment: 
+      - discovery.type=single-node
+      - xpack.security.enabled=false
     ports:
      - "9200:9200" # elasticsearch REST API 
     volumes: 
