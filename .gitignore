@@ -1,6 +1,10 @@
 .docker/
 .env
+
+# Test/cache tools
 .ruff_cache/
 .mypy_cache/
 .pytest_cache/
 data/*
+
+**/__pycache__/
