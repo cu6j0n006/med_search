@@ -221,6 +221,8 @@ __marimo__/
 .docker/data
 .docker/
 .env
+
+# Test/cache tools
 .ruff_cache/
 .mypy_cache/
 .pytest_cache/
