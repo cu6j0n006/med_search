@@ -28,6 +28,7 @@ class HasDocument:
     # TODO: add functions to extract sections and text
     @classmethod
     def get_sections(doc): 
+        ...
         
     
     # TODO: add parsing pipeline
