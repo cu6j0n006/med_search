@@ -1,7 +1,8 @@
-from pydantic import BaseModel, HttpUrl
 from datetime import date
+from typing import Any, final
+
 import Section
-from typing import final, Any 
+from pydantic import BaseModel, HttpUrl
 
 
 @final 

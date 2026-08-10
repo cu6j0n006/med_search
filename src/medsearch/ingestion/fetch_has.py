@@ -1,10 +1,11 @@
-from abc import ABC, abstractmethod
-import pandas as pd
 import os
-import rich 
-from download import download
+from abc import ABC, abstractmethod
 from pathlib import Path
 from urllib.parse import urlparse
+
+import pandas as pd
+import rich
+from download import download
 
 
 class HasIngestor(ABC): 
