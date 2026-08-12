@@ -40,33 +40,24 @@ def extract_spans(doc) -> list[RawSpan]:
                     if not text: 
                         continue 
                     font_flag = span.get ("flags", 0)
-                     
-                    
-    
+                    is_bold = True # for now
+                    spans.add(RawSpan(
+                        text=text, 
+                        size=round(span.get("size", 0.0), 1),
+                        bold=is_bold, 
+                        page=page_index, 
+                        bbox=span.get("bbox", (0, 0, 0, 0))
+                    ))
 
-@classmethod
-def get_title(doc):
-        meta_data = doc.metadata.get("title", "").strip()
-        if meta_data:
-            return meta_data
-        page = doc[0]  # this a Page object
-        blocks = page.get_text("dict")["blocks"]  #  May include text and images.
-        max_size = 0
-        title = ""
-        for block in blocks:
-            if block["type"] == 0 or "line" in block:
-                for line in block["lines"]:
-                    for span in line["spans"]:
-                        if span["size"] > max_size or span["size"] == max_size:
-                        # print(f"found new max_size {max_size} ")
-                            max_size = span["size"]
-                            title += span["text"]
-        return title.strip()
-    
+def extract_title(spans: list[RawSpan]):
+        first_page_spans = [s for s in spans if s.page == 0]
+        if not first_page_spans: 
+            return ""
+        return max(first_page_spans, key=lambda s: s.size ).text
 
-    # TODO: add functions to extract sections and text
-    @classmethod
-    def get_sections(doc): 
+# TODO: add functions to extract sections and text
+
+def extract_sections(doc): 
         ...
         
     
