@@ -227,3 +227,5 @@ __marimo__/
 .mypy_cache/
 .pytest_cache/
 data/*
+
+notebooks/
